@@ -87,6 +87,46 @@ def calc(*numbers):
     return sum
 
 
+def person(name, age, **kw):
+    print('name:', name, 'age:', age, 'other:', kw)
+
+
+def person1(name, age, **kw):
+    if 'city' in kw:
+        # 有city参数
+        pass
+    if 'job' in kw:
+        # 有job参数
+        pass
+    print('name:', name, 'age:', age, 'other:', kw)
+
+
+def f1(a, b, c=0, *args, **kw):
+    print('a =', a, 'b =', b, 'c =', c, 'args =', args, 'kw =', kw)
+
+
+def f2(a, b, c=0, *, d, **kw):
+    print('a =', a, 'b =', b, 'c =', c, 'd =', d, 'kw =', kw)
+
+
+def fact(n):
+    if n == 1:
+        return 1
+    return n * fact(n - 1)
+
+
+def mul(*args):
+    if len(args) == 0:
+        raise TypeError('Len Error')
+    sum = 1
+    for num in args:
+        if isinstance(num, (int, float)):
+            sum *= num
+        else:
+            raise TypeError('Type Error')
+    return sum
+
+
 if __name__ == '__main__':
     print(my_abs(-10))
     print(nop())
@@ -104,4 +144,19 @@ if __name__ == '__main__':
     print(add_end())
     print(add_end())
     print(calc())
-    print(calc(1,2))
+    print(calc(1, 2))
+    person('Michael', 30)
+    person('Bob', 35, city='Beijing')
+    person('Adam', 45, gender='M', job='Engineer')
+    extra = {'city': 'Beijing', 'job': 'Engineer'}
+    person('Jack', 24, city=extra['city'], job=extra['job'])
+    person('Jack', 24, **extra)
+    person1('Jack', 24, city='Beijing', addr='Chaoyang', zipcode=123456)
+    person('Jack', 24, city='Beijing', job='Engineer')
+    f1(1, 2)
+    f1(1, 2, c=3)
+    f1(1, 2, 3, 'a', 'b')
+    f1(1, 2, 3, 'a', 'b', x=99)
+    f2(1, 2, d=99, ext=None)
+    print(mul(1, 1, 2, 3, 4, 5, 6, 7))
+    print(fact(100))
