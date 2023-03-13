@@ -130,6 +130,8 @@ def mul(*args):
 if __name__ == '__main__':
     print(my_abs(-10))
     print(nop())
+    res1, res2 = move(100, 100, 60, math.pi / 6)
+    print("res1: %s; res2: %s" % (res1, res2))
     print(move(100, 100, 60, math.pi / 6))
     if quadratic(2, 3, 1) != (-0.5, -1.0):
         print('测试失败')
