@@ -106,3 +106,5 @@ if __name__ == '__main__':
     s2 = set([2, 3, 4])
     print(s1 & s2)  # 交集
     print(s1 | s2)  # 并集
+    print(set((1,2,3)))
+    print(set((1, 2, [3,4])))
